@@ -1,0 +1,18 @@
+DROP TABLE IF EXISTS `maplibs`;
+
+CREATE TABLE maplibs (
+  `id` BIGINT(20) UNSIGNED NOT NULL,
+  `user_id` BIGINT(20) UNSIGNED NOT NULL,
+  `created` INT(11) UNSIGNED NOT NULL,
+  `lastmodified` INT(11) UNSIGNED NOT NULL,  
+  `latitude` INT(11) UNSIGNED NOT NULL,
+  `longitude` INT(11) UNSIGNED NOT NULL,
+  `wof_id` BIGINT(20) UNSIGNED NOT NULL,
+  `feels` BIGINT(20) UNSIGNED NOT NULL,
+  `bucket` BIGINT(20) UNSIGNED NOT NULL,
+  `perspective` BIGINT(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `by_wof` (`wof_id`, `created`),
+  KEY `by_user` (`user_id`, `created`),
+  KEY `by_user_wof` (`user_id`, `wof_id`, `created`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
