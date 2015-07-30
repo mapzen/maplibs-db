@@ -48,10 +48,14 @@ if __name__ == '__main__':
     for path in args:
 
         path = os.path.abspath(path)
-        fh = open(path, 'r')
 
-        data = json.load(fh)
-        data = data.get(options.table, [])
+        try:
+            fh = open(path, 'r')
+            data = json.load(fh)
+            data = data.get(options.table, [])
+        catch Exception, e:
+            logging.error("failed to load %s, because %s" % (path, e))
+            continue
 
         for row in data:
             print row
