@@ -25,6 +25,11 @@ touch ${TMP}
 
 echo "DROP DATABASE IF EXISTS ${DBNAME};" >> ${TMP}
 echo "DROP USER '${USERNAME}'@'localhost';" >> ${TMP}
+echo "FLUSH PRIVILEGES;" >> ${TMP}
+
+# Note: the bit about dropping the user and then recreating does not
+# appear to be working even all the documentation says to do this. I
+# do not understand... (20150730/thisisaaronland)
 
 echo "CREATE DATABASE ${DBNAME};" >> ${TMP}
 echo "CREATE user '${USERNAME}'@'localhost' IDENTIFIED BY '${PASSWORD}';" >> ${TMP}
