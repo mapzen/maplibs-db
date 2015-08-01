@@ -53,12 +53,15 @@ if __name__ == '__main__':
             fh = open(path, 'r')
             data = json.load(fh)
             data = data.get(options.table, [])
-        catch Exception, e:
+        except Exception, e:
             logging.error("failed to load %s, because %s" % (path, e))
             continue
 
         for row in data:
             print row
+
+            # temp...
+            del(row['label_clean'])
 
             cols = []
             values = []
