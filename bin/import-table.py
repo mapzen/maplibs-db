@@ -12,7 +12,7 @@ if __name__ == '__main__':
     import optparse
     import ConfigParser
 
-    opt_parser = optparse.OptionParser()
+    opt_parser = optparse.OptionParser("""import-table.py -t <TABLE> -c <CONFIG> /path/to/data/file""")
 
     opt_parser.add_option('-t', '--table', dest='table', action='store', default=None, help='')
     opt_parser.add_option('-c', '--config', dest='config', action='store', default=None, help='')
